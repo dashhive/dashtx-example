@@ -12,7 +12,6 @@ let dashTx = DashTx.create({});
 const INSIGHT_BASE_URL = "https://insight.dash.org/insight-api";
 const DUST = 2000;
 
-//let testWalletPhrase = "zoo zoo zoo zoo zoo zoo zoo zoo zoo zoo zoo wrong";
 let testWalletPhrase =
   "donor actor must frost cotton wave custom sea behave rather second trip";
 let walletPhrase = process.env.WALLET_PHRASE || testWalletPhrase;
@@ -28,7 +27,7 @@ let walletPhrase = process.env.WALLET_PHRASE || testWalletPhrase;
  * @param {Number} amount - Dash, in decimal form (not sats)
  * @param {String} memo - the maya command string
  */
-Maya.transferToDash = async function (address, amount, memo = "") {
+Maya.transferDash = async function (address, amount, memo = "") {
   let txHex = await Maya.createDashTransaction(address, amount, memo);
   console.log();
   console.log(`[DEBUG] raw transaction:`);
@@ -255,7 +254,7 @@ async function main() {
   let amount = parseFloat(args[1]) || 0.001;
   let memoString = args[2] || "Hello, Dash!";
 
-  await Maya.transferToDash(address, amount, memoString);
+  await Maya.transferDash(address, amount, memoString);
 }
 
 if (require.main === module) {
