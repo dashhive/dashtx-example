@@ -1,0 +1,20 @@
+{
+  "name": "maya-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "maya.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dashincubator/secp256k1": "^1.7.1-5",
+    "dashhd": "^3.2.0",
+    "dashkeys": "^1.0.1",
+    "dashphrase": "^1.3.9",
+    "dashsight": "^1.6.0",
+    "dashtx": "^0.10.3"
+  }
+}
