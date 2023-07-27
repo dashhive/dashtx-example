@@ -62,9 +62,7 @@ Maya.createDashTransaction = async function (address, amount, memo = "") {
   let pubKeyHashBytes = await DashKeys.addrToPkh(address);
   let pubKeyHash = DashKeys.utils.bytesToHex(pubKeyHashBytes);
   let satoshis = DashTx.toSats(amount);
-  let encoder = new TextEncoder();
-  let memoBytes = encoder.encode(memo);
-  let memoHex = DashKeys.utils.bytesToHex(memoBytes);
+  let memoHex = DashTx.utils.strToHex(memo);
 
   // get the private key
   let salt = "";
@@ -109,8 +107,13 @@ Maya.createDashTransaction = async function (address, amount, memo = "") {
   console.log();
 
   // sign the transaction
-  let keys = [addressKey.privateKey];
-  let txInfoSigned = await dashTx.hashAndSignAll(txInfo, keys);
+  let signOpts = {
+    getPrivateKey: function (input, i) {
+      console.log("DEBUG input", input);
+      return addressKey.privateKey;
+    },
+  };
+  let txInfoSigned = await dashTx.hashAndSignAll(txInfo, signOpts);
 
   return txInfoSigned;
 };

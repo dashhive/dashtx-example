@@ -15,7 +15,7 @@
     "dashkeys": "^1.1.0",
     "dashphrase": "^1.4.0",
     "dashsight": "^1.6.0",
-    "dashtx": "^0.12.3"
+    "dashtx": "^0.13.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.5"
